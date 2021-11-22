@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
+
 <head>
   <meta charset="UTF-8" />
   <title>校内　案内</title>
-  <style>
-    #map {
-      height:100%;
-    }
-    html, body {
-      height:100%;
-      margin:0;
-      padding:0;
-    }
-  </style>
-</head>
-<body ng-controller="MyController">
-  <img ng-src="{{weather}}" />
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaBFzNFrqUTEgvsnlDByKwfAfsfE6JWgU&v=beta&callback=initRoute"></script>
-   <script src="./script.js"></script>
+  <script src="./script.js"></script>
   <script src="./RouteMap.js"></script>
   <script src="./roomCheck.js"></script>
+  <link rel="stylesheet" href="./stylesheet.css">
+</head>
+
+<body ng-controller="MyController">
   <script>
+  <img ng-src="{{weather}}" />
   // var images_src = new Array("images/0.jpeg","pics/1.jpeg","pics/2.jpeg","pics/3.jpeg","pics/4.jpeg","pics/5.jpeg","pics/6.jpeg","pics/7.jpeg","pics/8.jpeg","pics/9.jpeg","pics/10.jpeg","pics/11.jpeg","pics/12.jpeg","pics/13.jpeg","pics/14.jpeg","pics/15.jpeg","pics/16.jpeg","pics/17.jpeg","pics/18.jpeg");
 
   //天気
