@@ -15,10 +15,9 @@
 </head>
 
 <body ng-controller="MyController">
-  <img ng-src="{{weather}}">
-  <script>weatherIcon()</script>
-
   <main>
+    <img ng-src="{{weather}}">
+    <script>weatherIcon()</script>
     <td>
       <tr>
         <!-- 目的地検索 -->
@@ -94,7 +93,7 @@
             <option value="28">正門</option>
         </select>
 
-        <input type="button" value="決定" onclick="initRoute()"/>
+        <input type="button" value="決定" onclick=initRoute()>
       </tr>
     </td>
     <div class="container"></div>

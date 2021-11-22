@@ -16,3 +16,7 @@ p {
 select {
   font-size: 120%;
 }
+
+input {
+  font-size: 20px;
+}
