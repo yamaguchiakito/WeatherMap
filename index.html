@@ -6,159 +6,143 @@
   <title>校内　案内</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaBFzNFrqUTEgvsnlDByKwfAfsfE6JWgU&v=beta&callback=initRoute"></script>
-  <script src="./script.js"></script>
-  <script src="./RouteMap.js"></script>
-  <script src="./roomCheck.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/RouteMap.js"></script>
+  <script src="./scripts/roomCheck.js"></script>
   <link rel="stylesheet" href="./stylesheet.css">
 </head>
 
 <body ng-controller="MyController">
-  <script>
   <img ng-src="{{weather}}" />
+  <script>
   // var images_src = new Array("images/0.jpeg","pics/1.jpeg","pics/2.jpeg","pics/3.jpeg","pics/4.jpeg","pics/5.jpeg","pics/6.jpeg","pics/7.jpeg","pics/8.jpeg","pics/9.jpeg","pics/10.jpeg","pics/11.jpeg","pics/12.jpeg","pics/13.jpeg","pics/14.jpeg","pics/15.jpeg","pics/16.jpeg","pics/17.jpeg","pics/18.jpeg");
-
   //天気
   angular.module('myApp', [])
-    .controller('MyController', ['$scope', '$http', function($scope, $http) {
-      $scope.onclick = function(w) {
-        $http.jsonp('http://api.openweathermap.org/data/2.5/weather',
-          {
-            params: {
-              callback: 'JSON_CALLBACK',  // 1コールバック関数の名前
-              id: $scope.city,            // コード
-              lat: 35.1834122,
-              lon: 137.1108532,
-              APPID: 'c79b8ff1d56f9c7d9a242382f719ceb4'  // キー
-            }
+  .controller('MyController', ['$scope', '$http', function($scope, $http) {
+    $scope.onclick = function(w) {
+      $http.jsonp('http://api.openweathermap.org/data/2.5/weather',
+        {
+          params: {
+            callback: 'JSON_CALLBACK',  // 1コールバック関数の名前
+            id: $scope.city,            // コード
+            lat: 35.1834122,
+            lon: 137.1108532,
+            APPID: 'c79b8ff1d56f9c7d9a242382f719ceb4'  // キー
           }
-        )
-        // Web APIの結果に基づいて天気アイコンを表示
-        .success(function(data) {
-          $scope.weather =  'http://openweathermap.org/img/w/' + data.weather[0].icon +'.png';
-
         }
       )
-        .error(function(err) {
+      // Web APIの結果に基づいて天気アイコンを表示
+      .success(function(data) 
+        {
+          $scope.weather =  'http://openweathermap.org/img/w/' + data.weather[0].icon +'.png';
+        }
+      )
+      .error(function(err) {
           console.log(err);
         }
       );
-
-      };
-
-    }]);
-
+    };
+  }]);
   </script>
 
-
   <main>
+    <form>
+      <!-- 目的地検索 -->
+        <input type="text" name="number" id="searchbox"　value="" placeholder="教室を入力"></label>
+        <input type="button" ng-click="onclick()" id=searchbutton value="検索" onclick="check(number.value)">
 
+        <p><output id="guest"></output></p>
 
-  <form>
-    <!-- 目的地検索 -->
-      <input type="text" name="number" id="searchbox"　value="" placeholder="教室を入力"></label>
-      <input type="button" ng-click="onclick()" id=searchbutton value="検索" onclick="check(number.value)">
+      <!-- 出発点 -->
+      <select id="startpoint">
+          <option value="0">現在地</option>
+          <option value="1">1号館</option>
+          <option value="2">1号館別館</option>
+          <option value="3">新2号館</option>
+          <option value="4">2号館実験棟</option>
+          <option value="5">3号館</option>
+          <option value="6">4号館</option>
+          <option value="7">4号館別館</option>
+          <option value="8">5号館</option>
+          <option value="9">6号館</option>
+          <option value="10">7号館</option>
+          <option value="11">8号館</option>
+          <option value="12">9号館</option>
+          <option value="13">10号館</option>
+          <option value="14">11号館</option>
+          <option value="15">12号館</option>
+          <option value="16">13号館</option>
+          <option value="17">本部棟</option>
+          <option value="18">第2本部棟</option>
+          <option value="19">情報教育センター</option>
+          <option value="20">図書館</option>
+          <option value="21">計算センター</option>
+          <option value="22">総合技術研究所</option>
+          <option value="23">セントラルテラス</option>
+          <option value="24">愛和会館</option>
+          <option value="25">AITプラザ</option>
+          <option value="26">駐車場ゲート</option>
+          <option value="27">鉀徳館</option>
+          <option value="28">正門</option>
+      </select>
+      から
+      <!-- 目的地 -->
+      <select id="goalpoint">
+          <option value="0">目的地</option>
+          <option value="1">1号館</option>
+          <option value="2">1号館別館</option>
+          <option value="3">新2号館</option>
+          <option value="4">2号館実験棟</option>
+          <option value="5">3号館</option>
+          <option value="6">4号館</option>
+          <option value="7">4号館別館</option>
+          <option value="8">5号館</option>
+          <option value="9">6号館</option>
+          <option value="10">7号館</option>
+          <option value="11">8号館</option>
+          <option value="12">9号館</option>
+          <option value="13">10号館</option>
+          <option value="14">11号館</option>
+          <option value="15">12号館</option>
+          <option value="16">13号館</option>
+          <option value="17">本部棟</option>
+          <option value="18">第2本部棟</option>
+          <option value="19">情報教育センター</option>
+          <option value="20">図書館</option>
+          <option value="21">計算センター</option>
+          <option value="22">総合技術研究所</option>
+          <option value="23">セントラルテラス</option>
+          <option value="24">愛和会館</option>
+          <option value="25">AITプラザ</option>
+          <option value="26">駐車場ゲート</option>
+          <option value="27">鉀徳館</option>
+          <option value="28">正門</option>
+      </select>
 
-      <p align="center"><output id="guest"></output></p>
+      <input type="button" value="決定" onclick="initRoute()"/>
 
-    <!-- 出発点 -->
-    <select id="startpoint">
-        <option value="0">現在地</option>
-        <option value="1">1号館</option>
-        <option value="2">1号館別館</option>
-        <option value="3">新2号館</option>
-        <option value="4">2号館実験棟</option>
-        <option value="5">3号館</option>
-        <option value="6">4号館</option>
-        <option value="7">4号館別館</option>
-        <option value="8">5号館</option>
-        <option value="9">6号館</option>
-        <option value="10">7号館</option>
-        <option value="11">8号館</option>
-        <option value="12">9号館</option>
-        <option value="13">10号館</option>
-        <option value="14">11号館</option>
-        <option value="15">12号館</option>
-        <option value="16">13号館</option>
-        <option value="17">本部棟</option>
-        <option value="18">第2本部棟</option>
-        <option value="19">情報教育センター</option>
-        <option value="20">図書館</option>
-        <option value="21">計算センター</option>
-        <option value="22">総合技術研究所</option>
-        <option value="23">セントラルテラス</option>
-        <option value="24">愛和会館</option>
-        <option value="25">AITプラザ</option>
-        <option value="26">駐車場ゲート</option>
-        <option value="27">鉀徳館</option>
-        <option value="28">正門</option>
-    </select>
-
-  から
-
-  <!-- 目的地 -->
-  <select id="goalpoint">
-      <option value="0">目的地</option>
-      <option value="1">1号館</option>
-      <option value="2">1号館別館</option>
-      <option value="3">新2号館</option>
-      <option value="4">2号館実験棟</option>
-      <option value="5">3号館</option>
-      <option value="6">4号館</option>
-      <option value="7">4号館別館</option>
-      <option value="8">5号館</option>
-      <option value="9">6号館</option>
-      <option value="10">7号館</option>
-      <option value="11">8号館</option>
-      <option value="12">9号館</option>
-      <option value="13">10号館</option>
-      <option value="14">11号館</option>
-      <option value="15">12号館</option>
-      <option value="16">13号館</option>
-      <option value="17">本部棟</option>
-      <option value="18">第2本部棟</option>
-      <option value="19">情報教育センター</option>
-      <option value="20">図書館</option>
-      <option value="21">計算センター</option>
-      <option value="22">総合技術研究所</option>
-      <option value="23">セントラルテラス</option>
-      <option value="24">愛和会館</option>
-      <option value="25">AITプラザ</option>
-      <option value="26">駐車場ゲート</option>
-      <option value="27">鉀徳館</option>
-      <option value="28">正門</option>
-  </select>
-
-  <input type="button" value="決定" onclick="initRoute()"/>
-
-  <div class="container">
-  <!-- <section>
-      <p align="center">h<output id="place"></output></p>
-      <div  id="now">
-          <div id="weather">
+      <div class="container">
+      <!-- <section>
+          <p align="center">h<output id="place"></output></p>
+          <div  id="now">
+              <div id="weather">
+              </div>
           </div>
-      </div>
-  </section> -->
+      </section> -->
 
-    <!-- <p align="center">h<output id="weatherpp"></output></p> -->
+        <!-- <p align="center">h<output id="weatherpp"></output></p> -->
 
-    <p>距離：<span id="lenge"></span></p>　<!-- lengeに距離が入っている -->
-    <p>所要時間：<span id="time"></span></p>
+        <p>距離：<span id="lenge"></span></p>　<!-- lengeに距離が入っている -->
+        <p>所要時間：<span id="time"></span></p>
 
-
-    <div class="mapimg">
-        <!-- <img src="images/Map.jpg" width=80%> -->
-        <img class="start_pin" id="goal_1s" width=80%>
-        <!-- <img class="start_pin"  src="images/ru-to/1-4.jpg" width=80%> -->
-    </div>
-
-  </form>
-
-    <!-- <p class="img_center"><img id="mypic" src="images/Map.jpg" width="996" height="560"></p> -->
-
+        <div class="mapimg">
+          <img class="start_pin" id="goal_1s" width=80%>
+        </div>
+    </form>
   </main>
 
-  <script src="script.js">change()</script>
-  <script src="../_common/scripts/jquery-3.4.1.min.js"></script>
+  <script>change()</script>
+  <script src="./_common/scripts/jquery-3.4.1.min.js"></script>
   <div id="map"></div>
 
 </body>
