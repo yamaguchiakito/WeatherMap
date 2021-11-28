@@ -1,5 +1,5 @@
 function weatherIcon() {
-    // var images_src = new Array("images/0.jpeg","pics/1.jpeg","pics/2.jpeg","pics/3.jpeg","pics/4.jpeg","pics/5.jpeg","pics/6.jpeg","pics/7.jpeg","pics/8.jpeg","pics/9.jpeg","pics/10.jpeg","pics/11.jpeg","pics/12.jpeg","pics/13.jpeg","pics/14.jpeg","pics/15.jpeg","pics/16.jpeg","pics/17.jpeg","pics/18.jpeg");
+  // var images_src = new Array("images/0.jpeg","pics/1.jpeg","pics/2.jpeg","pics/3.jpeg","pics/4.jpeg","pics/5.jpeg","pics/6.jpeg","pics/7.jpeg","pics/8.jpeg","pics/9.jpeg","pics/10.jpeg","pics/11.jpeg","pics/12.jpeg","pics/13.jpeg","pics/14.jpeg","pics/15.jpeg","pics/16.jpeg","pics/17.jpeg","pics/18.jpeg");
   //天気
   angular.module('myApp', [])
   .controller('MyController', ['$scope', '$http', function($scope, $http) {

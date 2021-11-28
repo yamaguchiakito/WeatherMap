@@ -72,7 +72,7 @@ function initLenge(start, goal) {
           var distance = results[j].distance.text; // 距離
           var lenge = document.getElementById("lenge");
           lenge.innerHTML = distance;
-          console.log(distance);
+          //console.log(distance);
         }
       }
     }
