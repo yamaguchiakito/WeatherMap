@@ -9,10 +9,14 @@ html, body {
 }
 
 p {
-  font-size: 40px;
+  font-size: 30px;
   margin: 0px;
 }
 
 select {
   font-size: 120%;
+}
+
+input {
+  font-size: 20px;
 }

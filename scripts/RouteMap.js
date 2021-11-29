@@ -66,12 +66,14 @@ function initLenge(start, goal) {
 
         // 到着地点でループ
         for (var j = 0; j<results.length; j++) {
-          var from = origins[i]; // 出発地点の住所
-          var to = destinations[j]; // 到着地点の住所
+          //var from = origins[i]; // 出発地点の住所
+          //var to = destinations[j]; // 到着地点の住所
           var duration = results[j].duration.text; // 時間
           var distance = results[j].distance.text; // 距離
           var lenge = document.getElementById("lenge");
+          var time = document.getElementById("time");
           lenge.innerHTML = distance;
+          time.innerHTML = duration;
           //console.log(distance);
         }
       }

@@ -16,14 +16,17 @@
 
 <body ng-controller="MyController">
   <img ng-src="{{weather}}">
-  <script>weatherIcon()</script>
+  <!--
+     <script>ajaxRequest(35.1834122,137.1108532)</script>
+      <script>weatherIcon()</script> 
+    -->
 
   <main>
     <td>
       <tr>
         <!-- 目的地検索 -->
           <input type="text" name="number" id="searchbox"　value="" placeholder="教室を入力"></label>
-          <input type="button" ng-click="onclick()" id=searchbutton value="検索" onclick="check(number.value)">
+          <input type="button" ng-click="onclick()" id=searchbutton value="検索" onclick="check(searchbox.value)">
 
           <p><output id="guest"></output></p>
         </tr>

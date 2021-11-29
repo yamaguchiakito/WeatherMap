@@ -8,8 +8,6 @@ function ajaxRequest(lat, long) {
     const url = 'http://api.openweathermap.org/data/2.5/weather';
     const appId = 'c79b8ff1d56f9c7d9a242382f719ceb4';
 
-    var jsonWeather;
-
     $.ajax({
         url: url,
         data: {
@@ -51,7 +49,11 @@ function ajaxRequest(lat, long) {
     .fail(function() {
         console.log('$.ajax failed!');
     })
-}function a(){
+}
+
+/*
+function a(){
     ajaxRequest(35.1834122,137.1108532);
 }
 a();
+*/

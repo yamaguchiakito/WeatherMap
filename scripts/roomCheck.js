@@ -21,19 +21,19 @@ function check(n){
       case "B101":
       case "Gギャラリー":
         building = "新2号館";
-        num = 2;
+        num = 3;
         break;
       case "C1215":
       case "C1315":
       case "C1401":
       case "C1411":
         building = "3号館";
-        num = 3;
+        num = 5;
         break;
       case "K401":
       case "K404":
         building = "4号館";
-        num = 4;
+        num = 6;
         break;
       case "機器実験室":
       case "計測実験室":
@@ -44,7 +44,7 @@ function check(n){
       case "ER323":
       case "ER324":
         building = "5号館";
-        num = 5;
+        num = 8;
         break;
       case "7-201":
       case "7-202":
@@ -52,7 +52,7 @@ function check(n){
       case "7-205":
       case "7-206":
         building = "7号館";
-        num = 6;
+        num = 10;
         break;
       case "8-102":
       case "8-104":
@@ -62,7 +62,7 @@ function check(n){
       case "8-303":
       case "8-304":
         building = "8号館";
-        num = 7;
+        num = 5;
         break;
       case "G3201":
       case "G3202":
@@ -78,7 +78,7 @@ function check(n){
       case "G3503":
       case "G3504":
         building = "9号館";
-        num = 8;
+        num = 12;
         break;
       case "G2208":
       case "G2209":
@@ -92,48 +92,48 @@ function check(n){
       case "G2506":
       case "G2507":
         building = "10号館";
-        num = 9;
+        num = 13;
         break;
       case "11-101":
       case "11-201":
       case "11-301":
       case "11-401":
         building = "11号館";
-        num = 10;
+        num = 14;
         break;
       case "12-201":
       case "12-202":
       case "12-303":
         building = "12号館";
-        num = 11;
+        num = 15;
         break;
       case "13-101":
       case "13-201":
       case "13-301":
       case "13-401":
         building = "13号館";
-        num = 12;
+        num = 16;
         break;
       case "G151":
       case "G152":
       case "G251":
       case "G252":
         building = "1号館別館";
-        num = 13;
+        num = 2;
         break;
       case "C2101":
         building = "3号館別館";
-        num = 14;
+        //num = 14;
         break;
       case "G2110":
       case "G2210":
         building = "10号館大講義室";
-        num = 15;
+        //num = 15;
         break;
       case "情教実習室A":
       case "情教実習室B":
         building = "情報教育センター";
-        num = 16;
+        num = 19;
         break;
       case "セー講義室":
       case "マイコン室1":
@@ -141,10 +141,10 @@ function check(n){
       case "セー実習室1":
       case "セー実習室2":
         building = "計算センター";
-        num = 17;
+        num = 21;
         break;
       default:
-        num = 18;
+        //num = 18;
         break;
     }
     switch(n){
@@ -257,7 +257,9 @@ function check(n){
         break;
     }
     var g = document.getElementById('guest');
-    g.value = n + "は" + building + "の" + floor + "　下のボタンより選んで下さい";
+    var goalpoint = document.getElementById('goalpoint');
+    g.value = n + "は" + building + "の" + floor;
+    goalpoint.value = num;
     // document.getElementById("mypic").src=images_src[num];
   }
   
