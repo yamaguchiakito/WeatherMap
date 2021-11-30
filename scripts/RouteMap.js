@@ -32,8 +32,6 @@ var duration;
 var distance;
 var startP;
 var goalP;
-const buildingS;
-const buildingG;
 
 function pointSet(buildingS, buildingG) {
   /* 開始地点の座標を指定*/
@@ -81,7 +79,7 @@ function initLenge() {  //距離検索関数
           //var to = destinations[j]; // 到着地点の住所
           duration = results[j].duration.text; // 時間
           distance = results[j].distance.text; // 距離
-          //console.log(distance);
+          console.log(duration);
         }
       }
     }
@@ -121,8 +119,8 @@ function initRoute() {  //ルート検索関数
 }
 
 function weatherRouteMap() {  //天気で変化させる関数
-  buildingS = startpoint.selectedIndex;
-  buildingG = goalpoint.selectedIndex;  
+  const buildingS = startpoint.selectedIndex;
+  const buildingG = goalpoint.selectedIndex;  
   pointSet(buildingS, buildingG);
 
   initRoute();  //ルート検索関数呼び出し
