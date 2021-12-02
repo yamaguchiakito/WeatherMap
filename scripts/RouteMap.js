@@ -28,12 +28,12 @@ let point = [　//各館座標
   [35.18224430976271, 137.11375218426383],
   [35.18143011191469, 137.10945919161637]
 ];
-var duration;  
+var duration;
 var distance;
 var startP;
 var goalP;
 
-function pointSet(buildingS, buildingG) {
+function pointSet(buildingS, buildingG) {  //地点指定関数
   /* 開始地点の座標を指定*/
   startP = new google.maps.LatLng(point[buildingS][0],point[buildingS][1]);
   /* 目的地点の座標を指定*/
@@ -65,23 +65,18 @@ function initLenge() {  //距離検索関数
     if (status == google.maps.DistanceMatrixStatus.OK) {
 
       // 出発地点と到着地点の住所（配列）を取得
-      var origins = response.originAddresses;
-      var destinations = response.destinationAddresses;
+      //var origins = response.originAddresses;
+      //var destinations = response.destinationAddresses;
 
-      // 出発地点でループ
-      for (var i=0; i<origins.length; i++) {
-        // 出発地点から到着地点への計算結果を取得
-        var results = response.rows[i].elements;
+      // 出発地点から到着地点への計算結果を取得
+      var results = response.rows[0].elements;
 
-        // 到着地点でループ
-        for (var j = 0; j<results.length; j++) {
-          //var from = origins[i]; // 出発地点の住所
-          //var to = destinations[j]; // 到着地点の住所
-          duration = results[j].duration.text; // 時間
-          distance = results[j].distance.text; // 距離
-          console.log(duration);
-        }
-      }
+      // 到着地点でループ
+      //var from = origins[0]; // 出発地点の住所
+      //var to = destinations[0]; // 到着地点の住所
+      duration = results[0].duration.text; // 時間
+      distance = results[0].distance.text; // 距離
+      //console.log(duration);
     }
   });
 }
@@ -124,7 +119,7 @@ function weatherRouteMap() {  //天気で変化させる関数
   pointSet(buildingS, buildingG);
 
   initRoute();  //ルート検索関数呼び出し
-  initLenge(); //距離検索関数呼び出し
+  initLenge();  //距離検索関数呼び出し
 
   const wtr = selectWeather.selectedIndex;
   switch (wtr) {
