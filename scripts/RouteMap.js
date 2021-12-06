@@ -46,7 +46,6 @@ function weatherTime(duration) {
     default:
       break;
   }
-  //console.log(time/60);
   time = Math.round(time/60);
   return time;
 }
@@ -95,8 +94,6 @@ function initLenge() {  //距離検索関数
       //var to = destinations[0]; // 到着地点の住所
       var duration = results[0].duration.value; // 時間
       var distance = results[0].distance.value; // 距離
-      //console.log(duration);
-      //console.log(weatherTime(duration));
       //htmlに返す
       var lenge = document.getElementById("lenge");
       var time = document.getElementById("time");
@@ -141,7 +138,7 @@ function initRoute() {  //ルート検索関数
 function weatherRouteMap() {  //ルート表示メイン関数
   const buildingS = startpoint.selectedIndex;
   const buildingG = goalpoint.selectedIndex;  
-  pointSet(buildingS, buildingG);
+  pointSet(buildingS, buildingG);  //スタート地、目的地設定関数
   initRoute();  //ルート検索関数呼び出し
   initLenge();  //距離検索関数呼び出し
 }
