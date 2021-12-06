@@ -28,12 +28,31 @@ let point = [　//各館座標
   [35.18224430976271, 137.11375218426383],
   [35.18143011191469, 137.10945919161637]
 ];
-var duration;
-var distance;
 var startP;
 var goalP;
 
-function pointSet(buildingS, buildingG) {  //地点指定関数
+//天気で移動時間を変化させる関数
+function weatherTime(duration) {
+  var time;
+  const wtr = selectWeather.value;
+  switch (wtr) {
+    case "sun":
+    case "cloud":
+      time = duration*1.0;
+      break;
+    case "rain":
+      time = duration*1.3;
+      break;
+    default:
+      break;
+  }
+  //console.log(time/60);
+  time = Math.round(time/60);
+  return time;
+}
+
+//地点指定関数
+function pointSet(buildingS, buildingG) {
   /* 開始地点の座標を指定*/
   startP = new google.maps.LatLng(point[buildingS][0],point[buildingS][1]);
   /* 目的地点の座標を指定*/
@@ -74,9 +93,15 @@ function initLenge() {  //距離検索関数
       // 到着地点でループ
       //var from = origins[0]; // 出発地点の住所
       //var to = destinations[0]; // 到着地点の住所
-      duration = results[0].duration.text; // 時間
-      distance = results[0].distance.text; // 距離
+      var duration = results[0].duration.value; // 時間
+      var distance = results[0].distance.value; // 距離
       //console.log(duration);
+      //console.log(weatherTime(duration));
+      //htmlに返す
+      var lenge = document.getElementById("lenge");
+      var time = document.getElementById("time");
+      lenge.innerHTML = distance + "m";
+      time.innerHTML = weatherTime(duration) + "分";
     }
   });
 }
@@ -113,29 +138,10 @@ function initRoute() {  //ルート検索関数
   });
 }
 
-function weatherRouteMap() {  //天気で変化させる関数
+function weatherRouteMap() {  //ルート表示メイン関数
   const buildingS = startpoint.selectedIndex;
   const buildingG = goalpoint.selectedIndex;  
   pointSet(buildingS, buildingG);
-
   initRoute();  //ルート検索関数呼び出し
   initLenge();  //距離検索関数呼び出し
-
-  const wtr = selectWeather.selectedIndex;
-  switch (wtr) {
-    case "sun":
-    case "cloud":
-      duration = duration*1.0;
-      break;
-    case "rain":
-      duration = duration*1.3;
-      break;
-    default:
-      break;
-  }
-  //htmlに返す
-  var lenge = document.getElementById("lenge");
-  var time = document.getElementById("time");
-  lenge.innerHTML = distance;
-  time.innerHTML = duration;
 }
