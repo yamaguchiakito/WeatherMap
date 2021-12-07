@@ -18,7 +18,8 @@ function weatherIcon() {
       // Web APIの結果に基づいて天気アイコンを表示
       .success(function(data) 
         {
-          $scope.weather =  'http://openweathermap.org/img/w/' + data.weather[0].icon +'.png';
+          console.log(data.weather[0].icon);
+          $scope.weather =  'http://openweathermap.org/img/wn/' + data.weather[0].icon +'.png';
         }
       )
       .error(function(err) {
