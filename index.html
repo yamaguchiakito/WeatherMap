@@ -28,7 +28,7 @@
       <tr>
         <!-- 目的地検索 -->
           <input type="text" name="number" id="searchbox"　value="" placeholder="教室を入力"></label>
-          <input type="button" ng-click="onclick()" id=searchbutton value="検索" onclick="check(searchbox.value)">
+          <input type="button" id=searchbutton value="検索" onclick="check(searchbox.value)">
 
           <p><output id="guest"></output></p>
         </tr>
@@ -99,7 +99,7 @@
             <option value="28">正門</option>
         </select>
 
-        <input type="button" value="決定" onclick="weatherRouteMap()"/>
+        <input type="button" ng-click="onclick()"  value="決定" onclick="weatherRouteMap()"/>
       </tr>
     </td>
     <div class="container"></div>
